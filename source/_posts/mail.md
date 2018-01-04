@@ -50,8 +50,8 @@ set smtp-auth=login                    # 认证方式
 首先创建一个目录保存证书，然后创建证书和密钥的数据库
 
 ```
-$ mkdir ~/.certs
-$ certutil -N -d ~/.certs
+$ mkdir .certs
+$ certutil -N -d .certs
 ```
 
 然后从邮箱服务器获取证书，并导入到本地数据库（将hostname修改成对应的邮箱主机）
