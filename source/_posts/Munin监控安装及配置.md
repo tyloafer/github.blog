@@ -177,7 +177,7 @@ nginx_status | yes |
 
         git clone https://github.com/bpineau/redis-munin
 
-2. 将git下载的redis-munin中的*redis_*更名，更改为redis_*IP*_*PORT*, eg. *redis_127.0.0.1_6379*
+2. 将git下载的redis-munin中的*redis_*更名，更改为redis\_*IP*\_*PORT*, eg. *redis\_127.0.0.1\_6379*
 3. 加载redis插件
 
         ln -sf /path/to/redis_*IP*_*PORT* /etc/munin/plugins/
@@ -234,11 +234,8 @@ env.port 6379
     > vim /et/munin/conf.d/phpfpm
     > ~~~
     > [phpfpm*]
-    > user tank
-    > env.url http://munin.com/status
+    > env.url http://127.0.01/status
     > env.ports 80
-    > env.phpbin php-fpm
-    > env.phppool www
     > ~~~
 
 8. 测试phpfpm插件
