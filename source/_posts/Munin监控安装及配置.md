@@ -43,12 +43,10 @@ date: 2017-12-09 14:04
 
 3. 启动munin-node
    ​      
-        > service munin-node start
-
-        查看配置中htmldir的路径下是否生成了HTML等静态文件，如没有，请执行下面命令
-        > su - munin --shell=/bin/bash
-        >
-        > munin-cron
+       service munin-node start
+   查看配置中htmldir的路径下是否生成了HTML等静态文件，如没有，请执行下面命令   
+       su munin --shell=/bin/bash
+       munin-cron
 
 4. 访问静态页面的存放地址即可查看,此处没有单独配置域名，所以直接访问http://域名/munin/html/即可
 
@@ -178,21 +176,24 @@ nginx_status | yes |
         git clone https://github.com/bpineau/redis-munin
 
 2. 将git下载的redis-munin中的*redis_*更名，更改为redis\_*IP*\_*PORT*, eg. *redis\_127.0.0.1\_6379*
+
 3. 加载redis插件
 
-        ln -sf /path/to/redis_*IP*_*PORT* /etc/munin/plugins/
-   4.在/etc/munin/conf.d中添加redis，创建munin的redis配置文件
+   ~~~
+    ln -sf /path/to/redis_*IP*_*PORT* /etc/munin/plugins/
+   ~~~
 
-~~~
-[redis_*]  
-user root     //在这里要root用户  
-env.host 127.0.0.1  
-env.port 6379
-~~~
+4. 在/etc/munin/conf.d中添加redis，创建munin的redis配置文件
+
+       [redis_*]  
+        user root     //在这里要root用户  
+        env.host 127.0.0.1  
+        env.port 6379
 
 5. 测试redis插件
 
         munin-run redis
+
 6. 重启munin
 
         service munin-node restart
