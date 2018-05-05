@@ -3,7 +3,6 @@ title: Linux下mail发送邮件8015错误
 tags:
     - mail
     - Linux
-    - debug
 categories:
     - Linux
 date: 2018-01-25 20:05
