@@ -1,5 +1,6 @@
 ---
 title: test
+abbrlink: 63534
 tags:
 ---
 

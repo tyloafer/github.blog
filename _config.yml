@@ -14,9 +14,13 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://tyloafer.github.io
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink/
 permalink_defaults:
 
+abbrlink:
+  alg: crc16  # 算法：crc16(default) and crc32 
+  rep: dec    # 进制：dec(default) and hex
 # Directory
 source_dir: source
 public_dir: public
@@ -113,3 +117,5 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   version: "7.1.2" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
+baidusitemap:
+  path: baidusitemap.xml

@@ -1,12 +1,13 @@
 ---
 title: Session锁导致的ajax请求阻塞
-tags: 
-    - PHP
-    - Ajax
-    - SESSION
+tags:
+  - PHP
+  - Ajax
+  - SESSION
 categories:
-    - PHP
-date: 2018-03-24 13:40
+  - PHP
+date: '2018-03-24 13:40'
+abbrlink: 17445
 ---
 
 # 起因

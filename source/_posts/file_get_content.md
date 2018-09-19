@@ -1,11 +1,12 @@
 ---
 title: file_get_contents使用SSL连接报错
 tags:
-    - PHP
-    - Debug
+  - PHP
+  - Debug
 categories:
-    - PHP
-date: 2018-01-18 14:04
+  - PHP
+date: '2018-01-18 14:04'
+abbrlink: 55399
 ---
 
 # 分析

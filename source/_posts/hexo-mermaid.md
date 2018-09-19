@@ -1,13 +1,14 @@
 ---
 title: Hexo中引入Mermaid流程图
-tags: 
-    - Hexo
-    - Next
-    - Mermaid
-    - 流程图
+tags:
+  - Hexo
+  - Next
+  - Mermaid
+  - 流程图
 categories:
-    - Hexo
-date: 2018-04-21 15:40
+  - Hexo
+date: '2018-04-21 15:40'
+abbrlink: 7790
 ---
 
 # 起因

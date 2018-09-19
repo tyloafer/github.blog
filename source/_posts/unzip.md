@@ -1,11 +1,12 @@
 ---
 title: Windows上传ZIP文件到Linux下，解压乱码处理
-tags: 
-    - Debug
-    - Linux
+tags:
+  - Debug
+  - Linux
 categories:
-    - Debug
-date: 2018-02-03 16:04
+  - Debug
+date: '2018-02-03 16:04'
+abbrlink: 35688
 ---
 
 
@@ -37,30 +38,4 @@ unzip -O gbk filename.zip
 
 在Linux终端下，处理上述文件已经没有问题了，接下来肯定要考虑使用PHP来进行处理了。
 
-php有一个ZipArchiv 解压缩类，但是我并没有找到针对编码的处理方式，所以便想通过`exec`来处理。但是，php cli处理是没有问题的，php-fpm调度php处理的时候问题又发生了。
-
-# 扩展处理-PHP下处理
-
-通过自我测试后，暂时找到两种解决方案
-
-## popen
-
-代码如下：
-
-~~~
-	$fp = popen('/usr/bin/unzip -O GBK -a ' . $filename, 'r');
-	pclose($fp);
-~~~
-
-## passthru
-
-passthru 会自动将结果输出，这并不是我们想要的，可通过*缓冲区*进行处理
-
-代码如下：
-
-~~~
-ob_start()
-passthru ('/usr/bin/unzip -O GBK -a ' . $filename);
-on_clean();
-~~~
-
+php有一个ZipArchiv 解压缩类，但是我并没有找到针对编码的处理方式，所以无奈还是通过`exec`等命令来处理。**注意：** 如果你的php脚本是通过php-fpm来调度执行而不是php-cli直接执行的话，php-fpm的配置文件*php-fpm.conf*或*php-fpm.d/www.conf*里面会有环境变量的设置，这里要注意php-fpm的环境变量里面的*LANG*的值与Linux的设置的相同，不然还是会存在乱码的问题。

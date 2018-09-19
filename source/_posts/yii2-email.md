@@ -1,11 +1,12 @@
 ---
 title: Yii2倒腾系列：邮箱及多邮箱配置
-tags: 
-    - Yii2
-    - PHP
+tags:
+  - Yii2
+  - PHP
 categories:
-    - Yii2
-date: 2018-05-25 16:00
+  - Yii2
+date: '2018-05-15 16:00'
+abbrlink: 35776
 ---
 
 # 起因

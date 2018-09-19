@@ -1,12 +1,13 @@
 ---
 title: PHP如何读取大文件
 tags:
-    - PHP
-    - 优化
-    - 大文件
+  - PHP
+  - 优化
+  - 大文件
 categories:
-    - PHP
-date: 2018-01-24 14:04
+  - PHP
+date: '2018-01-24 14:04'
+abbrlink: 63198
 ---
 
 # 起因

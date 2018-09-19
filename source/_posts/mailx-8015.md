@@ -1,11 +1,12 @@
 ---
 title: Linux下mail发送邮件8015错误
 tags:
-    - mail
-    - Linux
+  - mail
+  - Linux
 categories:
-    - Linux
-date: 2018-01-25 20:05
+  - Linux
+date: '2018-01-25 20:05'
+abbrlink: 58415
 ---
 
 # 起因

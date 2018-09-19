@@ -1,11 +1,12 @@
 ---
 title: 使用redis-dump对redis的数据进行导入导出
-tags: 
-    - Redis
-    - Linux
+tags:
+  - Redis
+  - Linux
 categories:
-    - Redis
-date: 2018-02-03 16:40
+  - Redis
+date: '2018-02-03 16:40'
+abbrlink: 55761
 ---
 
 # 起因

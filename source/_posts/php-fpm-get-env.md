@@ -1,13 +1,14 @@
 ---
 title: PHP获取环境变量
-tags: 
-    - Nginx
-    - Linux
-    - PHP
-    - php-fpm
+tags:
+  - Nginx
+  - Linux
+  - PHP
+  - php-fpm
 categories:
-    - PHP
-date: 2018-02-05 17:35
+  - PHP
+date: '2018-02-05 17:35'
+abbrlink: 44810
 ---
 
 # 起因

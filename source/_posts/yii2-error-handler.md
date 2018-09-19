@@ -1,11 +1,12 @@
 ---
 title: Yii2倒腾系列：自定义错误处理
-tags: 
-    - Yii2
-    - PHP
+tags:
+  - Yii2
+  - PHP
 categories:
-    - Yii2
-date: 2018-04-24 16:00
+  - Yii2
+date: '2018-04-24 16:00'
+abbrlink: 40357
 ---
 
 # 起因

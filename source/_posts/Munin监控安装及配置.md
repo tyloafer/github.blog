@@ -1,11 +1,12 @@
 ---
 title: Munin安装及监控
-tags: 
-    - munin
-    - Linux
+tags:
+  - munin
+  - Linux
 categories:
-    - Linux
-date: 2017-12-09 14:04
+  - Linux
+date: '2017-12-09 14:04'
+abbrlink: 62852
 ---
 
 

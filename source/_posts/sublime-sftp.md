@@ -1,12 +1,13 @@
 ---
 title: Sublime倒腾系列：配置sftp实现文件上传下载
-tags: 
-    - Sublime
-    - Sftp
-    - Package
+tags:
+  - Sublime
+  - Sftp
+  - Package
 categories:
-    - Sublime
-date: 2018-04-21 13:40
+  - Sublime
+date: '2018-04-21 13:40'
+abbrlink: 45096
 ---
 
 # 起因

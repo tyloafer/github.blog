@@ -1,12 +1,13 @@
 ---
 title: Sublime倒腾系列：SublimeLinter-PHP语法检验
-tags: 
-    - Sublime
-    - SublimeLinter
-    - Package
+tags:
+  - Sublime
+  - SublimeLinter
+  - Package
 categories:
-    - Sublime
-date: 2018-5-5 14:40
+  - Sublime
+date: '2018-5-5 14:40'
+abbrlink: 48314
 ---
 
 # 安装

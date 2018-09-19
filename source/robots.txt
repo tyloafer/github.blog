@@ -10,4 +10,5 @@ Allow: /css/
 Allow: /images/
 Allow: /js/
 Allow: /lib/
-Sitemap: <your-domain-name>/sitemap.xml
+Sitemap: http://www.leolan.top/sitemap.xml
+Sitemap: http://www.leolan.top/baidusitemap.xml

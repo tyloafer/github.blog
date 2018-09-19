@@ -1,11 +1,12 @@
 ---
 title: Linux下使用mail发送邮件
 tags:
-    - mail
-    - Linux
+  - mail
+  - Linux
 categories:
-    - Linux
-date: 2017-12-03 14:04
+  - Linux
+date: '2017-12-03 14:04'
+abbrlink: 47206
 ---
 近期在做监控的时候，需要通过命令行来发送邮件。普通邮件通过25端口发送，简单配置一下即可，但是我们的邮件服务器并不支持普通的smtp邮件发送，仅仅支持smtps发送邮件，这就需要证书验证了，我们在这里通过自制证书并忽略验证来通过smtps发送邮件
 
