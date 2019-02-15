@@ -16,31 +16,31 @@ abbrlink: 56229
 
 <!--more-->
 
-#TSRM的实现
 
-##核心思想
 
-![https://github-1253518569.cos.ap-shanghai.myqcloud.com/thread_1.png?q-sign-algorithm=sha1&q-ak=AKIDXbUKyutO9u2NDNPIYRaeILMT2MAXjHLn&q-sign-time=1546662252;1546664052&q-key-time=1546662252;1546664052&q-header-list=&q-url-param-list=&q-signature=0cdf300657e46106c2f2bd6c1c4def00201eeeb5&x-cos-security-token=0ea4f4edd94c166a94f2a0bed6b06b2d0d58224210001](https://github-1253518569.cos.ap-shanghai.myqcloud.com/thread_1.png?q-sign-algorithm=sha1&q-ak=AKIDXbUKyutO9u2NDNPIYRaeILMT2MAXjHLn&q-sign-time=1546662252;1546664052&q-key-time=1546662252;1546664052&q-header-list=&q-url-param-list=&q-signature=0cdf300657e46106c2f2bd6c1c4def00201eeeb5&x-cos-security-token=0ea4f4edd94c166a94f2a0bed6b06b2d0d58224210001)
+# 核心思想
+
+![thread_1](https://github-1253518569.cos.ap-shanghai.myqcloud.com/thread_1.png)
 
 如图，如果三个线程的内存地址不同，那么在 Thread1 里面操作的是Thread1对应的内存地址，就不会影响 Thread2 和 Thread3 对应的内存地址的值。
 
 TSRM的核心思想就是为不同的线程分配独立的内存空间，如果一个资源会被多线程使用，那么首先需要预先向TSRM注册资源，然后TSRM为这个资源分配一个唯一的编号，并把这种资源的大小、初始化函数等保存到一个`tsrm_resource_type`结构中，各线程只能通过TSRM分配的那个编号访问这个资源；然后当线程拿着这个编号获取资源时TSRM如果发现是第一次请求，则会根据注册时的资源大小分配一块内存，然后调用初始化函数进行初始化，并把这块资源保存下来供这个线程后续使用。
 
-## 基本实现
+# 基本实现
 
-![线程安全结构](https://github-1253518569.cos.ap-shanghai.myqcloud.com/thread_safe.png?q-sign-algorithm=sha1&q-ak=AKIDsvBydxJkmcHW0Mj9AXHLxSAhGmJ0xtb4&q-sign-time=1546662685;1546664485&q-key-time=1546662685;1546664485&q-header-list=&q-url-param-list=&q-signature=e45ed7baba44d6a5eab111e746f28a2b2cfceed1&x-cos-security-token=c594aad82e6d688d10888f634f5e55b36a2fa51710001)
+![线程安全结构](https://github-1253518569.cos.ap-shanghai.myqcloud.com/thread_safe.png)
 
 
 
 TSRM的整体结构主要如上图所示，现从左向右开始梳理
 
-###tsrm_tls_table
+## tsrm_tls_table
 
 左侧第一个结构是 `tsrm_tls_table`, tsrm_tls_table 是一个数组，数组每个索引对应的值是一个地址，也就是为线程申请内存地址。那么如何确定线程在 tsrm_tls_table  的哪个索引下面呢，在PHP的数组的实现中，通过hash散列取模来确定索引，这里也是一样，只是简化了，直接通过线程id % tsrm_tls_table_size 来确定索引。
 
 我们以上图为例， tsrm_tls_table_size 为 2， 如果新的一个线程， 线程id（后面用 thread_id来替代）， 3 % 2 = 1， 所以 我们在 tsrm_tls_table[1] 下面去寻找这个线程内存地址。进而，这里就会引发一个问题， 5 % 2 = 1，那是不是就冲突了?
 
-### tsrm_tls_entry
+## tsrm_tls_entry
 
 ~~~
 struct _tsrm_tls_entry {
@@ -139,7 +139,7 @@ TSRM_API ts_rsrc_id ts_allocate_id(ts_rsrc_id *rsrc_id, size_t size, ts_allocate
 
 根据上面的初始化和注册资源流程可以看出， `tsrm_tls_entry`  结构是 `resource_types_table` 的基本组成单位，`resource_types_table` 就是线程的资源聚集地， 在注册资源的时候，tsrm会给资源分配一个id，然后线程再去使用这个资源的时候，首先根据tread_id找到 分配的线程内存地址，然后再根据 资源id，找到资源在线程内存地址里面的地址
 
-## 流程优化
+# 流程优化
 
 梳理一下，线程里面查找一个资源可以分为三步
 

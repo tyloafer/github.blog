@@ -1,7 +1,7 @@
 ---
 title: 在Vultr（centos7）上安装shadowsock及Google BBR实现全速翻墙
 tags:
-  - 翻墙
+  - 科学上网
   - ShadowSock
 categories:
   - ShadowSock
