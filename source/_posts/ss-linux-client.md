@@ -13,15 +13,17 @@ abbrlink: 31170
 
 <!--more-->
 
-# 安装配置shadowsocks
+# Proxychains4版本
 
-## 安装
+## 安装配置shadowsocks
+
+### 安装
 
 ~~~
 pip install shadowsocks
 ~~~
 
-## 配置
+### 配置
 
 编辑配置文件 `/etc/sslocal.json`，配置文件可以放在任意位置，启动的时候 指定对应位置即可
 
@@ -39,7 +41,7 @@ pip install shadowsocks
 
 配置时请把后面的注释去掉
 
-## 使用
+### 使用
 
 ~~~
 启动：sslocal -c /etc/sslocal.json -d start
@@ -49,7 +51,7 @@ pip install shadowsocks
 重启：sslocal -c /etc/sslocal.json -d restart
 ~~~
 
-# 安装配置 Proxychains4
+## 安装配置 Proxychains4
 
 项目地址： https://github.com/rofl0r/proxychains-ng
 
@@ -73,10 +75,26 @@ cp ./src/proxychains.conf /etc/proxychains.conf
 proxychains4 wget https://www.google.com
 ~~~
 
-# 测试
+# HTTP_PROXY(推荐)
 
 ~~~
-proxychains4 wget https://www.google.com
+http:
+export http_proxy=http://proxyAddress:port
+export http_proxy=socks5://127.0.0.1:1087
+
+https:
+export https_proxy=https://proxyAddress:port
+export https_proxy=socks5://127.0.0.1:1087
+
+http && https
+export all_proxy=http://proxyAddress:port
+export all_proxy=socks5://127.0.0.1:1087
 ~~~
 
-看一下能否下载下来东西
+如果http代理需要验证的话
+
+~~~
+http_proxy=http://userName:password@proxyAddress:port
+~~~
+
+其他代理方式相同
