@@ -5,7 +5,7 @@ tags:
   - HTTP
 categories:
   - PHP
-  - HTTp
+  - HTTP
 date: '2018-09-30 14:04'
 abbrlink: 13685
 ---
