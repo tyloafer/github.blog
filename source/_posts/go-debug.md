@@ -283,6 +283,8 @@ dlv debug main.go
    ~~~
 
    如上代码，gdb 使用 `p j` 打印变量j的时候报错，dlv却可以
+   
+3. dlv无法调试interface等Go内部实现的一些结构，gdb是可以的
 
 
 
