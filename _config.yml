@@ -119,3 +119,5 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
     #startOnload: true  // default true
 baidusitemap:
   path: baidusitemap.xml
+sitemap:
+  path: sitemap.xml
