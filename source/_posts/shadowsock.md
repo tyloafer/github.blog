@@ -4,9 +4,9 @@ tags:
   - 科学上网
   - ShadowSock
 categories:
-  - ShadowSock
+  - 科学上网
 date: '2018-06-23 13:40'
-abbrlink: 1
+abbrlink: 561
 ---
 
 对于程序猿来说，百度就是一个坑的存在，找一个问题，前面几页都是抄袭、雷同的问题，还有若干的百度经验，但是，对于近期的墙是越来越厚了，各种ss账号都失效了，无奈开始自己动手搭梯子吧。通过网上各种对比后，最后选了了[ Vultr](https://www.vultr.com/?ref=7290537) , 安装Google BBR后基本可以满速翻墙，而且，最强大的是，可以更换IP，现在最便宜的套餐 2.5$每月，500G的流量，也是足够了
@@ -67,7 +67,7 @@ pip install shadowsocks
          "9004":"password4"
     },
     "timeout":300,
-    "method":"aes-256-cfb",
+    "method":"aes-256-cfb"
 }
 ~~~
 
@@ -106,6 +106,7 @@ systemctl stop shadowsocks   # 停止服务
 ~~~
 /usr/bin/ssserver -c /etc/shadowsocks.json -d start # 启动
 /usr/bin/ssserver -c /etc/shadowsocks.json -d stop  # 停止
+echo "/usr/bin/ssserver -c /etc/shadowsocks.json -d start" >> /etc/rc.local # 添加到开机自启动
 ~~~
 
 # 安装BBR加速
@@ -141,5 +142,27 @@ systemctl stop shadowsocks   # 停止服务
 
 5. 执行 `lsmod | grep bbr`， 返回值有tcp_bbr 即已启动
 
-
 安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启。
+
+
+
+# 附
+
+近期的服务器老是被尝试暴力破解，然后ip被封，提供一下脚本进行处理
+
+~~~
+#! /bin/bash
+cat /var/log/secure|awk '/Failed/{print $(NF-3)}'|sort|uniq -c|awk '{print $2"="$1;}' > /home/sxdgy/lastb
+for i in `cat  /home/sxdgy/lastb`
+do
+  IP=`echo $i |awk -F= '{print $1}'`
+  NUM=`echo $i|awk -F= '{print $2}'`
+  if [ ${#NUM} -gt 1 ]; then
+    grep $IP /etc/hosts.deny > /dev/null
+    if [ $? -gt 0 ];then
+      echo "sshd:$IP:deny" >> /etc/hosts.deny
+    fi
+  fi
+done
+~~~
+
