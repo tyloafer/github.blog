@@ -1,5 +1,5 @@
 ---
-title: 在Vultr（centos7）上安装V2ray 更科学的上网
+title: 在centos7上安装V2ray 比shadowsock更科学的上网方式
 tags:
   - 科学上网
   - V2ray
